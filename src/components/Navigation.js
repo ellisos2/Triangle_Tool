@@ -12,6 +12,9 @@ function Navigation() {
                 <LinkContainer to="/TrigRatios">
                     <Nav.Link >Trigonometric Ratios Practice</Nav.Link>
                 </LinkContainer>
+                <LinkContainer to="/DrawTriangles">
+                    <Nav.Link >Draw a Triangle</Nav.Link>
+                </LinkContainer>
             </Nav>
         </Navbar>
     );

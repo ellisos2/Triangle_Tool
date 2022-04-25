@@ -29,6 +29,11 @@ function Home() {
         navigate(path);
     }
 
+    const routeDrawTriangles = () => {
+        let path = "/DrawTriangles";
+        navigate(path);
+    }
+
     return (
         <Container fluid>
             <h1>Triangle Problems Practice Tool</h1>
@@ -47,7 +52,11 @@ function Home() {
                     placement="right"
                     overlay={tooltip2}
                 >
-                    <Button variant="outline-dark">Draw Triangles</Button>
+                    <Button 
+                        variant="outline-dark"
+                        onclick={routeDrawTriangles}
+                    >
+                        Draw Triangles</Button>
                 </OverlayTrigger>
                 <OverlayTrigger
                     placement="right"

@@ -1,4 +1,4 @@
-import { Col, Row, Container, Stack } from "react-bootstrap";
+import { Col, Row, Container, Stack, Tooltip, Button, OverlayTrigger } from "react-bootstrap";
 import { React } from "react";
 import Triangle from "../components/Triangle.PNG";
 import SCTFormulas from "../components/SCTFormulas.js";
@@ -7,6 +7,12 @@ import AnswerBox from "../components/AnswerBox";
 import Hints from "../components/Hints";
 
 function TrigRatios( ) {
+
+    const tooltip = (props) => (
+        <Tooltip id="button-tooltip" {...props}>
+            Be careful - you will not be able to return to this exact problem.
+        </Tooltip>
+    )
 
     return (
         <Container fluid>
@@ -26,7 +32,15 @@ function TrigRatios( ) {
                     <AnswerBox></AnswerBox>
                 </Col>
                 <Col sm={{ span: 3, offset: 1 }}>
-                    <Hints></Hints>
+                    <Stack gap={5}>
+                        <Hints></Hints>
+                        <OverlayTrigger   
+                            placement="left"
+                            overlay={tooltip}
+                        >
+                            <Button variant="warning">Give me a new problem</Button>
+                        </OverlayTrigger>
+                    </Stack>
                 </Col>
             </Row>
         </Container>
