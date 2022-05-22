@@ -1,8 +1,9 @@
 import React from 'react';
 import { Table } from "react-bootstrap";
 
-function TriangleDimensions () {
-    return (   
+function TriangleDimensions ( {triangle} ) {
+    
+    return (
         <Table bordered>
             <thead>
                 <tr>
@@ -22,31 +23,31 @@ function TriangleDimensions () {
             <tbody>
                 <tr>
                     <td>side A</td>
-                    <td>3</td>
+                    <td>{triangle.problemSideA}</td>
                 </tr>
                 <tr>
                     <td>side B</td>
-                    <td>-</td>
+                    <td>{triangle.problemSideB}</td>
                 </tr>
                 <tr>
                     <td>side C</td>
-                    <td>5</td>
+                    <td>{triangle.problemSideC}</td>
                 </tr>
                 <tr>
                     <td>angle a</td>
-                    <td>-</td>
+                    <td>{triangle.problemAngleA}</td>
                 </tr>
                 <tr>
                     <td>angle b</td>
-                    <td>-</td>
+                    <td>{triangle.problemAngleB}</td>
                 </tr>
                 <tr>
                     <td>angle c</td>
-                    <td>90<span>&#176;</span></td>
+                    <td>{triangle.problemAngleC}<span>&#176;</span></td>
                 </tr>
             </tbody>
         </Table>
-    );
+    )
 };
 
 export default TriangleDimensions;

@@ -1,16 +1,20 @@
 import { React, useState } from "react";
 import { Form, Button, Toast, Row, Col } from "react-bootstrap";
 
-function AnswerBox () {
+function AnswerBox ({ triangle }) {
     const [answerMessage, setAnswerMessage] = useState("");
     const [userAnswer, setUserAnswer] = useState("");
     const [showToast, setShowToast] = useState(false);
 
     const toggleShowToast = () => setShowToast(!showToast);
 
+    //let triangleData = JSON.parse(triangle);
+
     const checkAnswer = (event) => {
         event.preventDefault();
-        const correctAnswer = 53.1;
+
+        let correctAnswer = triangle.answer;
+
         if (userAnswer <= correctAnswer + 0.1 && userAnswer >= correctAnswer - 0.1) {
             setAnswerMessage("Correct! Try another problem!")
         } else if (userAnswer === "") {
@@ -25,9 +29,7 @@ function AnswerBox () {
             <br></br>
             <Row className="align-items-center">
                 <Col>
-                    <h3>
-                        Solve for angle b
-                    </h3>
+                    <h3><strong>Solve for: </strong>{triangle.solveFor}</h3>
                 </Col>
             </Row>
             <Row className="align-items-center">
@@ -45,7 +47,7 @@ function AnswerBox () {
                         type="number"
                         step="0.1"
                         min="0"
-                        max="180"
+                        max="1000"
                         value={userAnswer}
                         onChange={e => setUserAnswer(e.target.value)}
                         >

@@ -1,5 +1,5 @@
 import { Col, Row, Container, Stack, Tooltip, Button, OverlayTrigger } from "react-bootstrap";
-import { React } from "react";
+import { React, useState, useEffect } from "react";
 import Triangle from "../components/Triangle.PNG";
 import SCTFormulas from "../components/SCTFormulas.js";
 import TriangleDimensions from "../components/TriangleDimensions";
@@ -8,11 +8,28 @@ import Hints from "../components/Hints";
 
 function TrigRatios( ) {
 
+    const[triangle, setTriangle] = useState({});
+
     const tooltip = (props) => (
         <Tooltip id="button-tooltip" {...props}>
             Be careful - you will not be able to return to this exact problem.
         </Tooltip>
-    )
+    );
+
+    const generateProblem = async () => {
+        const response = await fetch("/new-problem", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        });
+        const triangle = await response.json();
+        setTriangle(triangle);
+    };
+
+    useEffect(() => {
+        generateProblem();
+    }, []);
 
     return (
         <Container fluid>
@@ -23,13 +40,13 @@ function TrigRatios( ) {
                     <Stack gap={4}>
                         <SCTFormulas></SCTFormulas>
                         <br></br>
-                        <TriangleDimensions></TriangleDimensions>
+                        <TriangleDimensions triangle={triangle}></TriangleDimensions>
                     </Stack>
                 </Col>
             </Row>
             <Row>
                 <Col sm={{ span: 6, offset: 1 }}>
-                    <AnswerBox></AnswerBox>
+                    <AnswerBox triangle={triangle}></AnswerBox>
                 </Col>
                 <Col sm={{ span: 3, offset: 1 }}>
                     <Stack gap={5}>
@@ -38,7 +55,11 @@ function TrigRatios( ) {
                             placement="left"
                             overlay={tooltip}
                         >
-                            <Button variant="warning">Give me a new problem</Button>
+                            <Button 
+                                type="submit"
+                                onClick={generateProblem}
+                                variant="warning"
+                            >Give me a new problem</Button>
                         </OverlayTrigger>
                     </Stack>
                 </Col>

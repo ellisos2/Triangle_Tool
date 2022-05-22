@@ -54,7 +54,7 @@ function Home() {
                 >
                     <Button 
                         variant="outline-dark"
-                        onclick={routeDrawTriangles}
+                        onClick={routeDrawTriangles}
                     >
                         Draw Triangles</Button>
                 </OverlayTrigger>
