@@ -8,8 +8,6 @@ function AnswerBox ({ triangle }) {
 
     const toggleShowToast = () => setShowToast(!showToast);
 
-    //let triangleData = JSON.parse(triangle);
-
     const checkAnswer = (event) => {
         event.preventDefault();
 
@@ -26,7 +24,6 @@ function AnswerBox ({ triangle }) {
 
     return (
         <Form onSubmit={checkAnswer}>
-            <br></br>
             <Row className="align-items-center">
                 <Col>
                     <h3><strong>Solve for: </strong>{triangle.solveFor}</h3>
@@ -62,6 +59,7 @@ function AnswerBox ({ triangle }) {
                 <Col size="lg">
                     <Button 
                         type="submit"
+                        variant="success"
                         onClick={toggleShowToast}
                         >
                         Check your Answer

@@ -10,27 +10,10 @@ function Home() {
         </Tooltip>
     )
 
-    const tooltip2 = (props) => (
-        <Tooltip id="button-tooltip" {...props}>
-            Use the drawing tool to create a triangle of any size or shape!
-        </Tooltip>
-    )
-
-    const tooltip3 = (props) => (
-        <Tooltip id="button-tooltip" {...props}>
-            Try randomly generated problems using the law of sines and law of cosines formulas!
-        </Tooltip>
-    )
-
     let navigate = useNavigate();
 
     const routeTrigRatios = () => {
         let path = "/TrigRatios";
-        navigate(path);
-    }
-
-    const routeDrawTriangles = () => {
-        let path = "/DrawTriangles";
         navigate(path);
     }
 
@@ -47,22 +30,6 @@ function Home() {
                         onClick={routeTrigRatios}
                     >
                         Practice sin/cos/tan Problems</Button>
-                </OverlayTrigger>
-                <OverlayTrigger
-                    placement="right"
-                    overlay={tooltip2}
-                >
-                    <Button 
-                        variant="outline-dark"
-                        onClick={routeDrawTriangles}
-                    >
-                        Draw Triangles</Button>
-                </OverlayTrigger>
-                <OverlayTrigger
-                    placement="right"
-                    overlay={tooltip3}
-                >
-                    <Button variant="outline-dark">Practice Law of Sines/Cosines Problems</Button>
                 </OverlayTrigger>
             </Stack>
         </Container>

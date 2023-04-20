@@ -1,13 +1,12 @@
 import { React, useState, useEffect } from "react";
 import { Popover, Form, Button, Toast, Row, Col, OverlayTrigger } from "react-bootstrap";
 
-function Hints () {
+function Hints ({ triangle }) {
     
     const hint1 = (
             <Popover>
                 <Popover.Body>
-                    We are given the length of the hypotenuse and the side adjacent to the angle we are trying to solve for.
-                    Use the inverse cosine formula to find the measurement of the angle.
+                    {triangle.problemHint}
                 </Popover.Body>
             </Popover>
     )
@@ -15,7 +14,7 @@ function Hints () {
     return (
         <OverlayTrigger 
             trigger="click"
-            placement="left"
+            placement="right"
             overlay={hint1}
         >
             <Button variant="info">Click here for a hint on this problem!</Button>
